@@ -36,4 +36,4 @@ function! UpdateTags()
   execute ":redraw!"
 endfunction
 
-nnoremap <F4> :call UpdateTags()
+nnoremap <F4> :call UpdateTags() <CR>
