@@ -16,3 +16,24 @@ set wildmode=longest,list,full
 set wildmenu
 
 let NERDTreeQuitOnOpen=1
+
+" Enable window title "
+set title
+
+if v:version >= 700
+  set omnifunc=syntaxcomplete#Complete " override built-in C omnicomplete with C++ OmniCppComplete plugin
+  let OmniCpp_GlobalScopeSearch   = 1
+  let OmniCpp_DisplayMode         = 1
+  let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
+  let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
+  let OmniCpp_ShowAccess          = 1 "show access in pop-up
+  let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
+  set completeopt=menuone,menu,longest
+endif
+
+function! UpdateTags()
+  execute ":silent !ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q ./"
+  execute ":redraw!"
+endfunction
+
+nnoremap <F4> :call UpdateTags()
