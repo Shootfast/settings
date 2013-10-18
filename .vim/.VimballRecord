@@ -1,0 +1,4 @@
+supertab.vmb: call delete('/u/mkj/.vim/doc/supertab.txt')|call delete('/u/mkj/.vim/plugin/supertab.vim')
+tagbar.vmb: call delete('/u/mkj/.vim/README.md')|call delete('/u/mkj/.vim/autoload/tagbar.vim')|call delete('/u/mkj/.vim/doc/tagbar.txt')|call delete('/u/mkj/.vim/plugin/tagbar.vim')|call delete('/u/mkj/.vim/syntax/tagbar.vim')
+tagbar.vmb: call delete('/u/mkj/.vim/README.md')|call delete('/u/mkj/.vim/autoload/tagbar.vim')|call delete('/u/mkj/.vim/doc/tagbar.txt')|call delete('/u/mkj/.vim/plugin/tagbar.vim')|call delete('/u/mkj/.vim/syntax/tagbar.vim')
+tagbar.vmb: call delete('/u/mkj/.vim/README.md')|call delete('/u/mkj/.vim/autoload/tagbar.vim')|call delete('/u/mkj/.vim/doc/tagbar.txt')|call delete('/u/mkj/.vim/plugin/tagbar.vim')|call delete('/u/mkj/.vim/syntax/tagbar.vim')
