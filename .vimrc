@@ -8,6 +8,9 @@ colorscheme wombat
 " Enable to cvim plugin "
 filetype plugin on
 
+" Show the commands entered in normal mode "
+set showcmd
+
 set tabstop=4
 set shiftwidth=4
 
@@ -37,3 +40,9 @@ function! UpdateTags()
 endfunction
 
 nnoremap <F4> :call UpdateTags() <CR>
+nnoremap <F1> :NERDTreeToggle<CR>
+nnoremap <F2> :TagbarToggle<CR>
+
+let g:tagbar_type_cpp = {
+\ 'ctagsargs' : '-f - --format=2 --excmd=pattern --extra= --fields=nksaSmt --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -I "OCIO_NAMESPACE_ENTER=namespace ocio"'
+\}
