@@ -11,6 +11,9 @@ filetype plugin on
 " Show the commands entered in normal mode "
 set showcmd
 
+" Stop comments from continuing onto the next line "
+set formatoptions-=ro
+
 set tabstop=4
 set shiftwidth=4
 
@@ -42,7 +45,14 @@ endfunction
 nnoremap <F4> :call UpdateTags() <CR>
 nnoremap <F1> :NERDTreeToggle<CR>
 nnoremap <F2> :TagbarToggle<CR>
+nnoremap <F12> : :silent !gnome-terminal<CR>
 
 let g:tagbar_type_cpp = {
 \ 'ctagsargs' : '-f - --format=2 --excmd=pattern --extra= --fields=nksaSmt --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -I "OCIO_NAMESPACE_ENTER=namespace ocio"'
 \}
+
+" Automatically reread .vimrc if it changes "
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
