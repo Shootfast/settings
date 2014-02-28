@@ -45,7 +45,7 @@ endfunction
 nnoremap <F4> :call UpdateTags() <CR>
 nnoremap <F1> :NERDTreeToggle<CR>
 nnoremap <F2> :TagbarToggle<CR>
-nnoremap <F12> : :silent !gnome-terminal<CR>
+nnoremap <F12> : :silent !Terminal<CR>
 
 let g:tagbar_type_cpp = {
 \ 'ctagsargs' : '-f - --format=2 --excmd=pattern --extra= --fields=nksaSmt --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q -I "OCIO_NAMESPACE_ENTER=namespace ocio"'
