@@ -10,9 +10,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Bundle 'Valloric/YouCompleteMe'
+" Bundle 'Valloric/YouCompleteMe'
 
-Bundle 'scrooloose/nerdtree'
+" Bundle 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -30,7 +30,9 @@ let g:ycm_warning_symbol = '‼'
 set t_Co=256
 
 " Set the colorscheme to something nice "
-colorscheme wombat
+" colorscheme wombat
+let g:molokai_original = 1
+colorscheme molokai
 
 " Enable window title "
 set title
@@ -47,8 +49,9 @@ set hlsearch
 " Stop comments from continuing onto the next line "
 set formatoptions-=ro
 
-set smartindent
-set noexpandtab
+set autoindent
+set nosmartindent
+set noet
 set tabstop=4
 set shiftwidth=4
 
@@ -65,6 +68,19 @@ set listchars=eol:$,tab:»\ ,trail:.,extends:>,precedes:<,nbsp:.
 
 " Ensure backspace always works as expected "
 set backspace=2
+
+" Stop tilde backup files from being created in the current dir
+set backupdir=~/.vim/backup//
+
+" Disable swap file creation
+set noswapfile
+
+" Make linespace 2 to stop disappearing underscores
+set linespace=2
+
+" Relative line numbers
+set number
+set relativenumber
 
 " Unmap Ex mode key combination "
 :map Q <Nop>
@@ -83,13 +99,30 @@ nnoremap <silent> <C-Right> w
 
 " Press Space to turn off highlighting and clear any message already displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-" Go to definition "
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" Automatically reread .vimrc if we just wrote it "
-augroup reload_vimrc
-    au!
-    au BufWritePost $MYVIMRC so $MYVIMRC
-	au FocusGained,TabEnter,WinEnter * so $MYVIMRC
-augroup END
+function! SetupPython()
+    " Here, you can have the final say on what is set.  So
+    " fixup any settings you don't like.
+    set noet
+    set softtabstop=4
+    set tabstop=4
+    set shiftwidth=4
+endfunction
+command! -bar SetupPython call SetupPython()
 
+
+function! GuiTabLabel()
+  return exists('t:mytablabel') ? t:mytablabel : ''
+endfunction
+:set guitablabel=%{GuiTabLabel()}
+:set go+=e
+
+
+"inoremap <Up> <NOP>
+"inoremap <Down> <NOP>
+"inoremap <Left> <NOP>
+"inoremap <Right> <NOP>
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
