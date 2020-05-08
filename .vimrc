@@ -1,36 +1,19 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Help windows find ~/.vim
+if has('win32') || has('win64')
+	set guifont=Consolas:h10
+	set runtimepath+=~/.vim
+	set runtimepath+=~/.vim/after
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Bundle 'Valloric/YouCompleteMe'
-
-" Bundle 'scrooloose/nerdtree'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
 syntax on
 
-" YCM options "
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_error_symbol = '✘'
-let g:ycm_warning_symbol = '‼'
-
-" This is to set the terminal to 256 colors "
-" (which almost all terminals support) "
-set t_Co=256
+let g:CSApprox_verbose_level = 0
 
 " Set the colorscheme to something nice "
-" colorscheme wombat
 let g:molokai_original = 1
 colorscheme molokai
 
@@ -64,7 +47,7 @@ set wildmode=longest,list,full
 set wildmenu
 
 " Set and show whitespace characters "
-set listchars=eol:$,tab:»\ ,trail:.,extends:>,precedes:<,nbsp:.
+set listchars=eol:$,tab:�\ ,trail:.,extends:>,precedes:<,nbsp:.
 
 " Ensure backspace always works as expected "
 set backspace=2
@@ -85,13 +68,6 @@ set relativenumber
 " Unmap Ex mode key combination "
 :map Q <Nop>
 
-let NERDTreeQuitOnOpen=1
-
-nnoremap <F1> :NERDTreeToggle<CR>
-inoremap <F1> <C-O>:NERDTreeToggle<CR>
-nnoremap <F12> : :silent !Terminal<CR>
-inoremap <F12> <C-O>: :silent !Terminal<CR>
-
 " Make the ctrl left and right arrows move one word at a time
 nnoremap <silent> <C-Left> b
 nnoremap <silent> <C-Right> w
@@ -107,16 +83,15 @@ function! SetupPython()
     set softtabstop=4
     set tabstop=4
     set shiftwidth=4
+    set expandtab
 endfunction
 command! -bar SetupPython call SetupPython()
-
 
 function! GuiTabLabel()
   return exists('t:mytablabel') ? t:mytablabel : ''
 endfunction
 :set guitablabel=%{GuiTabLabel()}
 :set go+=e
-
 
 "inoremap <Up> <NOP>
 "inoremap <Down> <NOP>
@@ -126,3 +101,11 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+" Enable all python syntax highlighting
+let g:python_highlight_all = 1
+
+" Set yaml syntax highlighting on ocio configs
+autocmd  BufNewFile,BufRead *.ocio set syntax=yaml
+
+inoremap jk <Esc>
