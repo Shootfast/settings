@@ -104,6 +104,8 @@ noremap <Right> <NOP>
 
 " Enable all python syntax highlighting
 let g:python_highlight_all = 1
+" Disable concel mode in json plugin
+let g:vim_json_syntax_conceal = 0
 
 " Set yaml syntax highlighting on ocio configs
 autocmd  BufNewFile,BufRead *.ocio set syntax=yaml
