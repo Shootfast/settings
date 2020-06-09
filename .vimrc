@@ -109,5 +109,7 @@ let g:vim_json_syntax_conceal = 0
 
 " Set yaml syntax highlighting on ocio configs
 autocmd  BufNewFile,BufRead *.ocio set syntax=yaml
+" Set json syntax highlighting on eco3 files
+autocmd  BufNewFile,BufRead *.eco3 set filetype=json
 
 inoremap jk <Esc>
